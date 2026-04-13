@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def ft_garden_intro(name: str, height: int, age: int):
+def ft_garden_intro(name: str, height: int, age: int) -> None:
     """
     Display the plant information in garden
     """
@@ -10,8 +10,12 @@ def ft_garden_intro(name: str, height: int, age: int):
 
 
 def main() -> None:
+    name = "Rose"
+    height = 25
+    age = 30
+
     print("=== Welcome to My Garden ===")
-    ft_garden_intro("Rose", 25, 30)
+    ft_garden_intro(name, height, age)
     print()
     print("=== End of Program ===")
 

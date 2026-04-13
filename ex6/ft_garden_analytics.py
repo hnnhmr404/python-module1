@@ -44,7 +44,6 @@ class Plant:
         self._stats.display()
 
 
-# -------- FLOWER --------
 class Flower(Plant):
     def __init__(self, name, height, age, color):
         super().__init__(name, height, age)
@@ -63,7 +62,6 @@ class Flower(Plant):
             print(f"{self.name} has not bloomed yet")
 
 
-# -------- TREE --------
 class Tree(Plant):
     def __init__(self, name, height, age, trunk_diameter):
         super().__init__(name, height, age)
@@ -73,16 +71,15 @@ class Tree(Plant):
     def produce_shade(self):
         print(
             f"Tree {self.name} now produces a shade of "
-            f"{self.height:.1f}cm long and {self.trunk_diameter}cm wide."
+            f"{self.height:.1f}cm long and {self.trunk_diameter:.1f}cm wide."
         )
         self.shade_calls += 1
 
     def show(self):
         super().show()
-        print(f"Trunk diameter: {self.trunk_diameter}cm")
+        print(f"Trunk diameter: {self.trunk_diameter:.1f}cm")
 
 
-# -------- SEED --------
 class Seed(Flower):
     def __init__(self, name, height, age, color):
         super().__init__(name, height, age, color)
@@ -97,24 +94,23 @@ class Seed(Flower):
         print(f"Seeds: {self.seeds}")
 
 
-# -------- GLOBAL FUNCTION --------
 def show_stats(plant):
     print(f"[statistics for {plant.name}]")
     plant.display_stats()
+
     if isinstance(plant, Tree):
         print(f"{plant.shade_calls} shade")
 
 
-# -------- MAIN --------
 def main():
     print("=== Garden statistics ===")
 
-    print("=== Check year-old")
+    print("=== Check year-old ===")
     print(f"Is 30 days more than a year? -> {Plant.is_older_than_year(30)}")
     print(f"Is 400 days more than a year? -> {Plant.is_older_than_year(400)}")
     print()
 
-    print("=== Flower")
+    print("=== Flower ===")
     rose = Flower("Rose", 15.0, 10, "red")
     rose.show()
     show_stats(rose)
@@ -126,7 +122,7 @@ def main():
     show_stats(rose)
     print()
 
-    print("=== Tree")
+    print("=== Tree ===")
     oak = Tree("Oak", 200.0, 365, 5.0)
     oak.show()
     show_stats(oak)
@@ -136,7 +132,7 @@ def main():
     show_stats(oak)
     print()
 
-    print("=== Seed")
+    print("=== Seed ===")
     sunflower = Seed("Sunflower", 80.0, 45, "yellow")
     sunflower.show()
 
@@ -148,7 +144,7 @@ def main():
     show_stats(sunflower)
     print()
 
-    print("=== Anonymous")
+    print("=== Anonymous ===")
     unknown = Plant.anonymous()
     unknown.show()
     show_stats(unknown)

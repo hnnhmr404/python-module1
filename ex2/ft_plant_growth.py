@@ -13,7 +13,10 @@ class Plant:
         self.age_days += days
 
     def get_info(self) -> str:
-        return f"{self.name}: {round(self.height_cm, 1)}cm, {self.age_days} days old"
+        return (
+                f"{self.name}: {round(self.height_cm, 1)}cm, "
+                f"{self.age_days} days old"
+            )
 
 
 def simulate_week(plant: Plant, daily_growth: float) -> None:
@@ -26,7 +29,7 @@ def simulate_week(plant: Plant, daily_growth: float) -> None:
         print(f"=== Day {day} ===")
         print(plant.get_info())
 
-    total_growth = plant.height_cm - (plant.height_cm - daily_growth * 7)
+    total_growth = daily_growth * 7
     print(f"Growth this week: {round(total_growth, 1)}cm")
 
 

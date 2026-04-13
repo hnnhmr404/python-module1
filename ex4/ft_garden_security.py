@@ -1,45 +1,46 @@
 #!/usr/bin/env python3
 
+
 class Plant:
-    def __init__(self, name: str, height_cm: float = 0, age_days: int = 0):
+    def __init__(self, name: str, height: float = 0, age: int = 0) -> None:
         self.name = name
-        self._height_cm = 0
-        self._age_days = 0
 
-        if height_cm >= 0:
-            self._height_cm = height_cm
-        else:
+        if height < 0:
             print(f"{self.name}: Error, height can't be negative")
-
-        if age_days >= 0:
-            self._age_days = age_days
+            self._height = 0.0
         else:
+            self._height = height
+
+        if age < 0:
             print(f"{self.name}: Error, age can't be negative")
+            self._age = 0
+        else:
+            self._age = age
 
     def set_height(self, height: float) -> None:
         if height < 0:
             print(f"{self.name}: Error, height can't be negative")
             print("Height update rejected")
         else:
-            self._height_cm = height
-            print(f"Height updated: {round(self._height_cm, 1)}cm")
+            self._height = height
+            print(f"Height updated: {self._height}cm")
 
     def set_age(self, age: int) -> None:
         if age < 0:
             print(f"{self.name}: Error, age can't be negative")
             print("Age update rejected")
         else:
-            self._age_days = age
-            print(f"Age updated: {self._age_days} days")
+            self._age = age
+            print(f"Age updated: {self._age} days")
 
     def get_height(self) -> float:
-        return self._height_cm
+        return self._height
 
     def get_age(self) -> int:
-        return self._age_days
+        return self._age
 
     def show(self) -> None:
-        print(f"{self.name}: {round(self._height_cm, 1)}cm, {self._age_days} days old")
+        print(f"{self.name}: {self._height:.1f}cm, {self._age} days old")
 
 
 def main() -> None:
@@ -58,7 +59,7 @@ def main() -> None:
 
     rose.set_height(-5)
     rose.set_age(-10)
-    
+
     print()
 
     print("Current state: ", end="")
